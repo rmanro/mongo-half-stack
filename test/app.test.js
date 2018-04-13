@@ -40,6 +40,14 @@ describe('Bands', () => {
             .send(band2);
     });
 
+    it('GET - array of all bands', () => {
+        return chai.request(app)
+            .get('bands')
+            .then(({ body }) => {
+                assert.equal(body.length, 2);
+            });
+    });
+
     after(() => mongo.client.close());
 
 });
