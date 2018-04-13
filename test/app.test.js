@@ -53,6 +53,14 @@ describe('Bands', () => {
             });
     });
 
+    it('GET - one band by id', () => {
+        return chai.request(app)
+            .get(`/bands/${band._id}`)
+            .then(result => {
+                assert.equal(result.body.name, band.name);
+            });
+    });
+
     after(() => mongo.client.close());
 
 });
