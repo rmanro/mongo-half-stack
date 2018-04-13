@@ -30,19 +30,24 @@ describe('Bands', () => {
             });
     });
 
-    after(() => {
-        const band2 = {
+    it('Add second band', () => {
+        let band2 = {
             name: 'Shame',
             city: 'London'
         };
         return chai.request(app)
             .post('/bands')
-            .send(band2);
+            .send(band2)
+            .then(({ body }) => {
+                assert.ok(body._id);
+                assert.equal(body.name, band2.name);
+                band2 = body;
+            });
     });
 
     it('GET - array of all bands', () => {
         return chai.request(app)
-            .get('bands')
+            .get('/bands')
             .then(({ body }) => {
                 assert.equal(body.length, 2);
             });
