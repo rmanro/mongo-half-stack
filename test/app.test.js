@@ -61,6 +61,14 @@ describe('Bands', () => {
             });
     });
 
+    it('GET - 404 error on bad id given', () => {
+        return chai.request(app)
+            .get('/bands/5ad1098df666666dfbc9b8aa')
+            .then(result => {
+                assert.equal(result.statusCode, 404);
+            });
+    });
+
     after(() => mongo.client.close());
 
 });
