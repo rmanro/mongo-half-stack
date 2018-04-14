@@ -69,6 +69,14 @@ describe('Bands', () => {
             });
     });
 
+    it('DELETE - band by id', () => {
+        return chai.request(app)
+            .del(`/bands/${band._id}`)
+            .then(result => {
+                assert.equal(result.text, '{"removed":true}');
+            });
+    });
+
     after(() => mongo.client.close());
 
 });
