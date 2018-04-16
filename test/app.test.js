@@ -73,7 +73,7 @@ describe('Bands', () => {
         return chai.request(app)
             .del(`/bands/${band._id}`)
             .then(result => {
-                assert.equal(result.text, '{"removed":true}');
+                assert.equal(result.text, '{"n":1,"ok":1}');
             });
     });
 
