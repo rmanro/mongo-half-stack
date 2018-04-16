@@ -1,14 +1,6 @@
 const http = require('http');
 const app = require('./lib/app');
-const mongodb = require('./lib/mongodb');
-
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/bands';
-
-console.log(mongodb);
-
-mongodb.connect(MONGODB_URI)
-    .then(() => console.log('Mongo Connected', MONGODB_URI))
-    .catch(err => console.log('Mongo FAIL', err));
+require('./lib/mongodb');
 
 const server = http.createServer(app);
 const PORT = process.env.PORT || 3000;
