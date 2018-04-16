@@ -19,6 +19,11 @@ describe('Bands', () => {
         city: 'Calgary'
     };
 
+    let band2 = {
+        name: 'Shame',
+        city: 'London'
+    };
+
     it('POST - Saves a band', () => {
         return chai.request(app)
             .post('/bands')
@@ -31,10 +36,6 @@ describe('Bands', () => {
     });
 
     it('Add second band', () => {
-        let band2 = {
-            name: 'Shame',
-            city: 'London'
-        };
         return chai.request(app)
             .post('/bands')
             .send(band2)
@@ -74,6 +75,16 @@ describe('Bands', () => {
             .del(`/bands/${band._id}`)
             .then(result => {
                 assert.equal(result.text, '{"n":1,"ok":1}');
+            });
+    });
+
+    it('PUT - update a band', () => {
+        band2.city = 'London, UK';
+        return chai.request(app)
+            .put(`/bands/${band2._id}`)
+            .send(band2)
+            .then(result => {
+                assert.equal(result.text, '{"n":1,"nModified":1,"ok":1}');
             });
     });
 
