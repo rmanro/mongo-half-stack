@@ -1,7 +1,7 @@
 {
   "name": "mongo-half-stack",
   "version": "1.0.0",
-  "description": "",
+  "description": "HTTP Server using MongoDB to store rock bands",
   "main": "server.js",
   "directories": {
     "lib": "lib",
@@ -15,7 +15,7 @@
     "type": "git",
     "url": "git+https://github.com/rmanro/mongo-half-stack.git"
   },
-  "author": "",
+  "author": "Ryan Manro",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/rmanro/mongo-half-stack/issues"
